@@ -1,0 +1,28 @@
+{
+  "name": "cellr-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "back": "nodemon ./index.js",
+    "makeMigration": "npx knex --knexfile ./knexfile migrate:make ",
+    "migrate": "npx knex --knexfile ./knexfile migrate:latest",
+    "pg": "psql -U postgres"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "knex": "^0.95.11",
+    "nodemon": "^2.0.13",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.0.1"
+  }
+}
