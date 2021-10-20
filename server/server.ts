@@ -5,7 +5,7 @@ import users from './routes/users.js'
 import wines from './routes/wines.js'
 import encounters from './routes/encounters.js'
 
-const port = process.env.EXPRESS_PORT || 3000
+const port = process.env.PORT || 3000
 
 export default async () => {
   // Initialize express
@@ -15,6 +15,7 @@ export default async () => {
   await db.migrate.latest()
   console.log('running seeds')
   await db.seed.run()
+  console.log('port:', port)
 
   //Middleware
   app.use(express.json())
