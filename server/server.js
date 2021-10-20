@@ -4,7 +4,7 @@ import db from './knex.js';
 import users from './routes/users.js';
 import wines from './routes/wines.js';
 import encounters from './routes/encounters.js';
-const port = process.env.DATABASE_URL || 3000;
+const port = process.env.PORT || 3000;
 export default async () => {
     // Initialize express
     const app = express();
