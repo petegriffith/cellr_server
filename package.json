@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "back": "nodemon ./index.js",
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js",
     "makeMigration": "npx knex --knexfile ./knexfile migrate:make ",
     "migrate": "npx knex --knexfile ./knexfile migrate:latest",
     "pg": "psql -U postgres"
