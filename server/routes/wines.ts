@@ -41,7 +41,7 @@ routes.delete('/delete/:wine_id', async (req: Request, res: Response) => {
       const { wine_id } = req.params;
       const int_wine_id = +wine_id
       await db('wines').where('id', int_wine_id).del()
-      res.status(202).end()
+      res.status(202).send(`wine ${wine_id} deleted!`).end()
   }
   catch (err) {
       res.status(500);
