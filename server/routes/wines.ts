@@ -17,14 +17,6 @@ routes.get('/allWines', async (req: Request, res: Response) => {
 routes.post('/post', async (req: Request, res: Response) => {
   const newWine: NewWine = req.body
   try {
-    // THIS IS A POSSIBLE PLACE TO HANDLE THE VINTAGE ISSUE
-    /* if (newWine.vintage) {
-      if (newWine.vintage.length > 2) {
-        newWine.vintage = +newWine.vintage
-      } else {
-        newWine.vintage = undefined
-      }
-    } */
     await db('wines').insert(newWine)
     res.status(200).send(`${newWine.name} posted`)
   } catch (err) {
