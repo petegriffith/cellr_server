@@ -5,6 +5,9 @@ export interface Wine {
     vintage?:number
     color: string
 }
+
+export type NewWine = Partial<Wine>
+
 export interface WineEncounter {
     id: number
     wine_id?: number
