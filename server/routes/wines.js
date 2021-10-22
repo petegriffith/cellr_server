@@ -12,13 +12,13 @@ routes.get('/allWines', async (req, res) => {
     }
 });
 routes.post('/post', async (req, res) => {
+    const newWine = req.body;
     try {
-        const newWine = req.body;
         await db('wines').insert(newWine);
         res.status(200).send(`${newWine.name} posted`);
     }
     catch (err) {
-        res.status(500);
+        res.status(500).send(newWine);
         res.send(err);
     }
 });
@@ -38,7 +38,7 @@ routes.delete('/delete/:wine_id', async (req, res) => {
         const { wine_id } = req.params;
         const int_wine_id = +wine_id;
         await db('wines').where('id', int_wine_id).del();
-        res.status(202).end();
+        res.status(202).send(`wine ${wine_id} deleted!`).end();
     }
     catch (err) {
         res.status(500);

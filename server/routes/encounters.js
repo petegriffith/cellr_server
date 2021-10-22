@@ -11,10 +11,21 @@ routes.get('/allEncounters', async (req, res) => {
         res.send(err);
     }
 });
-routes.get('/:wine_id', async (req, res) => {
+routes.get('/byID/:wine_id', async (req, res) => {
     try {
         const { wine_id } = req.params;
         const encounters = await db('encounters').where('id', wine_id);
+        res.status(200).send(encounters);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(err);
+    }
+});
+routes.get('/byName/:wine_name', async (req, res) => {
+    try {
+        const { wine_name } = req.params;
+        const encounters = await db('encounters').where('wine_name', wine_name);
         res.status(200).send(encounters);
     }
     catch (err) {
@@ -27,6 +38,10 @@ routes.post('/post/:wine_id', async (req, res) => {
         const { wine_id } = req.params;
         const newEncounter = req.body;
         newEncounter.wine_id = wine_id;
+        // Not sure if these two lines work, have to try them out
+        const wine_name = await db('wines').where('id', wine_id).select('name');
+        newEncounter.wine_name = wine_name;
+        // ^^
         await db('encounters').insert(newEncounter);
         res.status(200).send(newEncounter);
     }

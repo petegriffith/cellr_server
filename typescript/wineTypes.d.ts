@@ -4,6 +4,7 @@ export interface Wine {
     varietal?: string
     vintage?:number
     color: string
+    created_at: string;
 }
 
 export type NewWine = Partial<Wine>
@@ -16,7 +17,7 @@ export interface WineEncounter {
     purchase_location?: string
     rating?: number
     notes: string
-    encounter_date: Date
+    encounter_date: string
 }
 
 export interface WineStoreContents {
