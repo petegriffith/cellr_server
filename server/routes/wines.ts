@@ -25,11 +25,12 @@ routes.post('/', async (req: Request, res: Response) => {
   }
 })
 
-// This is a work in progress, obviously
-routes.patch('/patchWine/:wine_id', async (req: Request, res: Response) => {
+routes.patch('/patchWine/:id', async (req: Request, res: Response) => {
   try {
-    const { wine_id } = req.params
+    const { id } = req.params
     const wineUpdates = req.body
+    await db('wines').where('id', id).update(wineUpdates)
+    res.status(204).end()
   } catch (err) {
     res.status(500)
     res.send(err)
@@ -40,11 +41,11 @@ routes.delete('/:id', async (req: Request, res: Response) => {
   const { id } = req.params
   try {
     await db('wines').where('id', id).del()
-    res.status(202).send(id)
+    res.status(204).end()
   } catch (err) {
     res.status(500)
     res.send(err)
   }
-})  
+})
 
 export default routes

@@ -22,11 +22,12 @@ routes.post('/', async (req, res) => {
         res.send(err);
     }
 });
-// This is a work in progress, obviously
-routes.patch('/patchWine/:wine_id', async (req, res) => {
+routes.patch('/patchWine/:id', async (req, res) => {
     try {
-        const { wine_id } = req.params;
+        const { id } = req.params;
         const wineUpdates = req.body;
+        await db('wines').where('id', id).update(wineUpdates);
+        res.status(204).end();
     }
     catch (err) {
         res.status(500);
@@ -37,7 +38,7 @@ routes.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
         await db('wines').where('id', id).del();
-        res.status(202).send(id);
+        res.status(204).end();
     }
     catch (err) {
         res.status(500);
