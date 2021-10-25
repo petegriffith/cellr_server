@@ -10,7 +10,7 @@ export interface Wine {
 export type NewWine = Partial<Wine>
 
 export interface WineEncounter {
-    id: number
+    id?: number
     wine_id?: number
     wine_name: string
     bottle_price?: number

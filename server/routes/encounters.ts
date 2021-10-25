@@ -4,7 +4,7 @@ import db from '../knex.js'
 
 const routes: Router = Router()
 
-routes.get('/allEncounters', async (req: Request, res: Response) => {
+routes.get('/all', async (req: Request, res: Response) => {
   try {
     const encounters: WineEncounter[] = await db('encounters')
     res.status(200).send(encounters)
@@ -14,10 +14,10 @@ routes.get('/allEncounters', async (req: Request, res: Response) => {
   }
 })
 
-routes.get('/byID/:wine_id', async (req: Request, res: Response) => {
+routes.get('/byWineID', async (req: Request, res: Response) => {
   try {
-    const { wine_id }  = req.params
-    const encounters: WineEncounter[] = await db('encounters').where('id', wine_id)
+    const wineId  = req.body
+    const encounters: WineEncounter[] = await db('encounters').where('wine_id', wineId.wine_id)
     res.status(200).send(encounters)
   } catch (err) {
     res.status(500)
@@ -25,27 +25,13 @@ routes.get('/byID/:wine_id', async (req: Request, res: Response) => {
   }
 })
 
-routes.get('/byName/:wine_name', async (req: Request, res: Response) => {
+routes.post('/', async (req: Request, res: Response) => {
   try {
-    const { wine_name }  = req.params
-    const encounters: WineEncounter[] = await db('encounters').where('wine_name', wine_name)
-    res.status(200).send(encounters)
-  } catch (err) {
-    res.status(500)
-    res.send(err)
-  }
-})
-
-
-routes.post('/post/:wine_id', async (req: Request, res: Response) => {
-  try {
-    const { wine_id } = req.params
     const newEncounter = req.body
-    newEncounter.wine_id = wine_id
-    // Not sure if these two lines work, have to try them out
-    const wine_name = await db('wines').where('id', wine_id).select('name')
-    newEncounter.wine_name = wine_name
-    // ^^
+    //Grabbing the wine name from the wines database
+    const selectedName = await db('wines').where('id', newEncounter.wine_id).select('name')
+    newEncounter.wine_name = selectedName[0].name
+    //
     await db('encounters').insert(newEncounter)
     res.status(200).send(newEncounter)
   } catch (err) {
@@ -54,12 +40,11 @@ routes.post('/post/:wine_id', async (req: Request, res: Response) => {
   }
 })
 
-routes.delete('/delete/:encounterId', async (req: Request, res: Response) => {
+routes.delete('/', async (req: Request, res: Response) => {
   try {
-    const { encounterId }  = req.params
-    const intEncounterId: number = +encounterId
-    await db('encounters').where('id', intEncounterId).del()
-    res.status(202).send(intEncounterId)
+    const encounterId  = req.body
+    await db('encounters').where('id', encounterId.id).del()
+    res.status(202).send('encounter deleted')
   } catch (err) {
     res.status(500)
     res.send(err)

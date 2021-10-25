@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import db from '../knex.js';
 const routes = Router();
-routes.get('/allWines', async (req, res) => {
+routes.get('/all', async (req, res) => {
     try {
         const wines = await db('wines');
         res.status(200).send(wines);
@@ -11,7 +11,7 @@ routes.get('/allWines', async (req, res) => {
         res.send(err);
     }
 });
-routes.post('/post', async (req, res) => {
+routes.post('/', async (req, res) => {
     const newWine = req.body;
     try {
         await db('wines').insert(newWine);
@@ -33,12 +33,11 @@ routes.patch('/patchWine/:wine_id', async (req, res) => {
         res.send(err);
     }
 });
-routes.delete('/delete/:wine_id', async (req, res) => {
+routes.delete('/', async (req, res) => {
     try {
-        const { wine_id } = req.params;
-        const int_wine_id = +wine_id;
-        await db('wines').where('id', int_wine_id).del();
-        res.status(202).send(`wine ${wine_id} deleted!`).end();
+        const wineId = req.body;
+        await db('wines').where('id', wineId.id).del();
+        res.status(202).send(`wine deleted`).end();
     }
     catch (err) {
         res.status(500);

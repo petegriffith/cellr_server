@@ -1,5 +1,6 @@
 export default [
   {
+    wine_id: 1,
     wine_name: 'Risan Red',
     bottle_price: 1000,
     purchase_location: 'tablecloth',
@@ -7,6 +8,7 @@ export default [
     notes: 'Notes of hickory',
   },
   {
+    wine_id: 1,
     wine_name: 'Risan Red',
     bottle_price: 1000,
     purchase_location: 'tablecloth',
@@ -14,6 +16,7 @@ export default [
     notes: 'Great again',
   },
   {
+    wine_id: 1,
     wine_name: 'Risan Red',
     bottle_price: 1000,
     purchase_location: 'tablecloth',
@@ -21,6 +24,7 @@ export default [
     notes: 'Not great with fish',
   },
   {
+    wine_id: 2,
     wine_name: 'Andoran White',
     bottle_price: 1200,
     purchase_location: 'tablecloth',
