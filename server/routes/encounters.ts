@@ -40,10 +40,10 @@ routes.post('/', async (req: Request, res: Response) => {
   }
 })
 
-routes.delete('/', async (req: Request, res: Response) => {
+routes.delete('/:wineId', async (req: Request, res: Response) => {
+  const { wineId }  = req.params
   try {
-    const encounterId  = req.body
-    await db('encounters').where('id', encounterId.id).del()
+    await db('encounters').where('id', wineId).del()
     res.status(202).send('encounter deleted')
   } catch (err) {
     res.status(500)

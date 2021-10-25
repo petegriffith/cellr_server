@@ -1,5 +1,6 @@
 export default [
   {
+    id: 1,
     wine_id: 1,
     wine_name: 'Risan Red',
     bottle_price: 1000,

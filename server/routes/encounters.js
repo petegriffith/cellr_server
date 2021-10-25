@@ -37,10 +37,10 @@ routes.post('/', async (req, res) => {
         res.send(err);
     }
 });
-routes.delete('/', async (req, res) => {
+routes.delete('/:wineId', async (req, res) => {
+    const { wineId } = req.params;
     try {
-        const encounterId = req.body;
-        await db('encounters').where('id', encounterId.id).del();
+        await db('encounters').where('id', wineId).del();
         res.status(202).send('encounter deleted');
     }
     catch (err) {

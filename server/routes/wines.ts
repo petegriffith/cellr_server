@@ -36,15 +36,15 @@ routes.patch('/patchWine/:wine_id', async (req: Request, res: Response) => {
   }
 })
 
-routes.delete('/', async (req: Request, res: Response) => {
+routes.delete('/:id', async (req: Request, res: Response) => {
+  const { id } = req.params
   try {
-    const wineId = req.body
-    await db('wines').where('id', wineId.id).del()
-    res.status(202).send(`wine deleted`).end()
+    await db('wines').where('id', id).del()
+    res.status(202).send(id)
   } catch (err) {
     res.status(500)
     res.send(err)
   }
-})
+})  
 
 export default routes
