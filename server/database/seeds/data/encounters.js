@@ -33,12 +33,14 @@ export default [
         notes: 'Nice and floral',
     },
     {
+        wine_id: 2,
         wine_name: 'Andoran White',
         rating: 5,
         purchase_location: 'La Posteria Tokyo',
         notes: 'In tokyo: 900 yen for a glass. Expensive but worth it!',
     },
     {
+        wine_id: 2,
         wine_name: 'Andoran White',
         bottle_price: 900,
         purchase_location: 'tablecloth',
@@ -46,6 +48,7 @@ export default [
         notes: 'On sale!',
     },
     {
+        wine_id: 3,
         wine_name: 'Bajoran Red',
         bottle_price: 400,
         purchase_location: 'tablecloth',

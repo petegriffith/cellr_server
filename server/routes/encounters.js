@@ -11,10 +11,10 @@ routes.get('/all', async (req, res) => {
         res.send(err);
     }
 });
-routes.get('/byWineID', async (req, res) => {
+routes.get('/:wineId', async (req, res) => {
     try {
-        const wineId = req.body;
-        const encounters = await db('encounters').where('wine_id', wineId.wine_id);
+        const { wineId } = req.params;
+        const encounters = await db('encounters').where('wine_id', wineId);
         res.status(200).send(encounters);
     }
     catch (err) {

@@ -14,10 +14,10 @@ routes.get('/all', async (req: Request, res: Response) => {
   }
 })
 
-routes.get('/byWineID', async (req: Request, res: Response) => {
+routes.get('/:wineId', async (req: Request, res: Response) => {
   try {
-    const wineId  = req.body
-    const encounters: WineEncounter[] = await db('encounters').where('wine_id', wineId.wine_id)
+    const { wineId }  = req.params
+    const encounters: WineEncounter[] = await db('encounters').where('wine_id', wineId)
     res.status(200).send(encounters)
   } catch (err) {
     res.status(500)
