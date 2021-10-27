@@ -25,7 +25,7 @@ routes.post('/', async (req: Request, res: Response) => {
   }
 })
 
-routes.patch('/:id', async (req: Request, res: Response) => {
+routes.patch('/:id/patch', async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const wineUpdates = req.body

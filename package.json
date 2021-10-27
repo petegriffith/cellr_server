@@ -9,7 +9,8 @@
     "dev": "nodemon ./index.js",
     "makeMigration": "npx knex --knexfile ./knexfile migrate:make ",
     "migrate": "npx knex --knexfile ./knexfile migrate:latest",
-    "pg": "psql -U postgres"
+    "pg": "psql -U postgres",
+    "seed": "npx knex --knexfile ./knexfile seed:run"
   },
   "author": "",
   "license": "ISC",
