@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./index.js",
+    "start": "set NODE_ENV=production && node ./index.js",
     "dev": "nodemon ./index.js",
     "makeMigration": "npx knex --knexfile ./knexfile migrate:make ",
     "migrate": "npx knex --knexfile ./knexfile migrate:latest",

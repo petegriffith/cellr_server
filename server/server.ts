@@ -13,8 +13,10 @@ export default async () => {
   // migrations and seeds
   console.log('running migrations')
   await db.migrate.latest()
-  console.log('running seeds')
-  await db.seed.run()
+  if (process.env.NODE_ENV === 'development') {
+    console.log('running seeds')
+    await db.seed.run()
+  }
 
   //Middleware
   app.use(express.json())
@@ -24,9 +26,7 @@ export default async () => {
   app.use('/wines', wines)
   app.use('/encounters', encounters)
 
-  
-
   app.listen(port, () => {
     console.log('app listening at port: ', port)
   })
-}
+}   
