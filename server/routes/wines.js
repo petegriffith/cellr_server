@@ -11,6 +11,17 @@ routes.get('/all', async (req, res) => {
         res.send(err);
     }
 });
+routes.get('/:wine_id', async (req, res) => {
+    try {
+        const { wine_id } = req.params;
+        const wines = await db('wines').where('id', wine_id).first();
+        res.status(200).send(wines);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(err);
+    }
+});
 routes.post('/', async (req, res) => {
     const newWine = req.body;
     try {
