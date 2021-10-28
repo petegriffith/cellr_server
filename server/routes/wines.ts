@@ -31,7 +31,7 @@ routes.post('/', async (req: Request, res: Response) => {
     await db('wines').insert(newWine)
     res.status(200).send(`${newWine.name} posted`)
   } catch (err) {
-    res.status(500).send(newWine)
+    res.status(500).end()
     res.send(err)
   }
 })

@@ -64,7 +64,7 @@ export default [
     notes: 'cheap! Might try again for gluhwein but not as is.',
   },
   {
-    user_id: 2,
+    user_id: 1,
     wine_id: 3,
     wine_name: 'Bajoran Red',
     bottle_price: 400,

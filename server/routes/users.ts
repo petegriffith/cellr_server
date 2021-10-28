@@ -28,8 +28,8 @@ routes.get('/:user_id', async (req: Request, res: Response): Promise<void> => {
 routes.post('/', async (req: Request, res: Response) => {
     const newUser: UserData = req.body
     try {
-      await db('wines').insert(newUser)
-      res.status(204).end()
+      await db('users').insert(newUser)
+      res.status(200).send(newUser)
     } catch (err) {
       res.status(500)
       res.send(err)

@@ -25,8 +25,8 @@ routes.get('/:user_id', async (req, res) => {
 routes.post('/', async (req, res) => {
     const newUser = req.body;
     try {
-        await db('wines').insert(newUser);
-        res.status(204).end();
+        await db('users').insert(newUser);
+        res.status(200).send(newUser);
     }
     catch (err) {
         res.status(500);
