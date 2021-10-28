@@ -1,6 +1,7 @@
 export default [
   {
     id: 1,
+    user_id: 1,
     wine_id: 1,
     wine_name: 'Risan Red',
     bottle_price: 1000,
@@ -9,6 +10,7 @@ export default [
     notes: 'Notes of hickory',
   },
   {
+    user_id: 1,
     wine_id: 1,
     wine_name: 'Risan Red',
     bottle_price: 1000,
@@ -17,6 +19,7 @@ export default [
     notes: 'Great again',
   },
   {
+    user_id: 1,
     wine_id: 1,
     wine_name: 'Risan Red',
     bottle_price: 1000,
@@ -25,6 +28,7 @@ export default [
     notes: 'Not great with fish',
   },
   {
+    user_id: 1,
     wine_id: 2,
     wine_name: 'Andoran White',
     bottle_price: 1200,
@@ -33,6 +37,7 @@ export default [
     notes: 'Nice and floral',
   },
   {
+    user_id: 1,
     wine_id: 2,
     wine_name: 'Andoran White',
     rating: 5,
@@ -40,6 +45,7 @@ export default [
     notes: 'In tokyo: 900 yen for a glass. Expensive but worth it!',
   },
   {
+    user_id: 1,
     wine_id: 2,
     wine_name: 'Andoran White',
     bottle_price: 900,
@@ -49,11 +55,21 @@ export default [
   },
 
   {
+    user_id: 1,
     wine_id: 3,
     wine_name: 'Bajoran Red',
     bottle_price: 400,
     purchase_location: 'tablecloth',
     rating: 2,
     notes: 'cheap! Might try again for gluhwein but not as is.',
+  },
+  {
+    user_id: 2,
+    wine_id: 3,
+    wine_name: 'Bajoran Red',
+    bottle_price: 400,
+    purchase_location: 'tablecloth',
+    rating: 3,
+    notes: 'This is Meg\'s first review!',
   },
 ]

@@ -7,9 +7,9 @@
   "scripts": {
     "start": "set NODE_ENV=production && node ./index.js",
     "dev": "nodemon ./index.js",
+    "pg": "psql -U postgres",
     "makeMigration": "npx knex --knexfile ./knexfile migrate:make ",
     "migrate": "npx knex --knexfile ./knexfile migrate:latest",
-    "pg": "psql -U postgres",
     "seed": "npx knex --knexfile ./knexfile seed:run"
   },
   "author": "",
