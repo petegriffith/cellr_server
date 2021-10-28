@@ -14,4 +14,15 @@ routes.get('/all', async (req: Request, res: Response): Promise<void> => {
     }
 })
 
+routes.get('/:cellr_id', async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { cellr_id } = req.params
+        const cellr: CellrData = await db('cellrs').where('id', cellr_id).first()
+        res.status(200).send(cellr)
+    } catch (err) {
+        res.status(500)
+        res.send(err)
+    }
+})
+
 export default routes
