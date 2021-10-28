@@ -6,7 +6,7 @@ const routes: Router = Router()
 
 routes.get('/all', async (req: Request, res: Response) => {
   try {
-    const wines: Wine[] = await db('wines')
+    const wines: Wine[] = await db('wines').where('cellr_id', req.headers.cellr)
     res.status(200).send(wines)
   } catch (err) {
     res.status(500)
