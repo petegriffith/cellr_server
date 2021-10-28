@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import db from '../knex.js';
 const routes = Router();
-routes.get('/all', async (req, res) => {
+routes.get('/', async (req, res) => {
     try {
         const encounters = await db('encounters');
         res.status(200).send(encounters);
