@@ -1,6 +1,7 @@
 import express from 'express'
 import 'dotenv/config'
 import db from './knex.js'
+import cellrs from './routes/cellrs.js'
 import users from './routes/users.js'
 import wines from './routes/wines.js'
 import encounters from './routes/encounters.js'
@@ -22,6 +23,7 @@ export default async () => {
   app.use(express.json())
 
   // API routes
+  app.use('/cellrs', cellrs)
   app.use('/users', users)
   app.use('/wines', wines)
   app.use('/encounters', encounters)

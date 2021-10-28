@@ -4,7 +4,7 @@ import db from '../knex.js'
 
 const routes: Router = Router()
 
-routes.get('/all', async (req: Request, res: Response) => {
+routes.get('/', async (req: Request, res: Response) => {
   try {
     const encounters: WineEncounter[] = await db('encounters')
     res.status(200).send(encounters)
