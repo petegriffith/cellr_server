@@ -1,16 +1,29 @@
-import userList  from './data/users.js'
+import cellrList from './data/cellrs.js'
+import userList from './data/users.js'
 import wineList from './data/wines.js'
 import encountersList from './data/encounters.js'
 
 export async function seed(knex) {
   // Deletes ALL existing entries
   const deleteAllTables = () => {
-    return knex('users').del()
+    return knex('cellrs')
+      .del()
       .then(function() {
-        return knex('encounters').del()
-      }).then(function() {
+        return knex('users').del()
+      })
+      .then(function() {
         return knex('wines').del()
       })
+      .then(function() {
+        return knex('encounters').del()
+      })
+  }
+
+  const seedCellrs = async () => {
+    let cellrs = cellrList
+    for (let cellr of cellrs) {
+      await knex('cellrs').insert(cellr)
+    }
   }
 
   const seedUsers = async () => {
@@ -35,6 +48,7 @@ export async function seed(knex) {
   }
 
   await deleteAllTables()
+  await seedCellrs()
   await seedUsers()
   await seedWines()
   await seedEncounters()

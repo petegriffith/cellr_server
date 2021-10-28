@@ -22,7 +22,7 @@ routes.post('/', async (req, res) => {
         res.send(err);
     }
 });
-routes.patch('/:id', async (req, res) => {
+routes.patch('/:id/patch', async (req, res) => {
     try {
         const { id } = req.params;
         const wineUpdates = req.body;
