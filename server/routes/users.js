@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import db from '../knex.js';
 const routes = Router();
+
+
 routes.get('/all', async (req, res) => {
     try {
         const users = await db('users');
@@ -11,10 +13,10 @@ routes.get('/all', async (req, res) => {
         res.send(err);
     }
 });
-routes.get('/:user_id', async (req, res) => {
+routes.get('/:email', async (req, res) => {
     try {
-        const { user_id } = req.params;
-        const user = await db('users').where('id', user_id).first();
+        const { email } = req.params;
+        const user = await db('users').where('email', email).first();
         res.status(200).send(user);
     }
     catch (err) {
