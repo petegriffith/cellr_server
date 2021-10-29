@@ -3,7 +3,7 @@ import db from '../knex.js';
 const routes = Router();
 routes.get('/all', async (req, res) => {
     try {
-        const wines = await db('wines').where('cellr_id', req.headers.cellr);
+        const wines = await db('wines').where('cellr_id', req.headers.cellr_id);
         res.status(200).send(wines);
     }
     catch (err) {
