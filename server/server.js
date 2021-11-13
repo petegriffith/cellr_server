@@ -25,7 +25,7 @@ export default async () => {
         origin: 'https://happy-tereshkova-ae8e78.netlify.app',
       })
     ) */
-    app.use(cors);
+    app.use(cors());
     // API routes
     app.use('/cellrs', cellrs);
     app.use('/users', users);
