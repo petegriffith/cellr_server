@@ -21,12 +21,15 @@ export default async () => {
   }
 
   //Middleware
+  
   app.use(express.json())
-  app.use(
+  // should origin control later like this:
+  /* app.use(
     cors({
       origin: 'https://happy-tereshkova-ae8e78.netlify.app',
     })
-  )
+  ) */
+  app.use(cors)
 
   // API routes
   app.use('/cellrs', cellrs)
