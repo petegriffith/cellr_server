@@ -24,7 +24,7 @@ export default async () => {
   app.use(express.json())
   app.use(
     cors({
-      origin: 'https://happy-tereshkova-ae8e78.netlify.app',
+      origin: 'TEST',
     })
   )
 

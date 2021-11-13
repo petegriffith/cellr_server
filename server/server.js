@@ -20,7 +20,7 @@ export default async () => {
     //Middleware
     app.use(express.json());
     app.use(cors({
-        origin: 'https://happy-tereshkova-ae8e78.netlify.app',
+        origin: 'TEST',
     }));
     // API routes
     app.use('/cellrs', cellrs);
