@@ -3,6 +3,16 @@ import db from '../knex.js'
 
 const routes: Router = Router()
 
+routes.get('/allCellrs', async (req: Request, res: Response) => {
+  try {
+    const wines: Wine[] = await db('wines')
+    res.status(200).send(wines)
+  } catch (err) {
+    res.status(500)
+    res.send(err)
+  }
+})
+
 routes.get('/all', async (req: Request, res: Response) => {
   try {
     const wines: Wine[] = await db('wines').where('cellr_id', req.headers.cellr_id)
