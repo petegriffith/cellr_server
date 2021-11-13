@@ -1,20 +1,20 @@
 export async function up(knex) {
-    const addNewEncounterFkey = () => {
+    const addNewWineFkey = () => {
       return knex.schema.table('wines', (t) => {
         t.integer('cellr_id').references('cellrs.id').onUpdate('CASCADE').onDelete('CASCADE')
       })
     }
   
-    await addNewEncounterFkey()
+    await addNewWineFkey()
   }
   
   export async function down(knex) {
-    const dropEncounterFkey = () => {
+    const dropWineFkey = () => {
       return knex.schema.table('wines', (t) => {
         t.dropColumn('cellr_id')
       })
     }
   
-    await dropEncounterFkey()
+    await dropWineFkey()
   }
   

@@ -11,7 +11,7 @@ routes.get('/', async (req, res) => {
         res.send(err);
     }
 });
-routes.get('/:wineId', async (req, res) => {
+routes.get('/fromWine/:wineId', async (req, res) => {
     try {
         const { wineId } = req.params;
         const encounters = await db('encounters').where('wine_id', wineId);
@@ -22,13 +22,11 @@ routes.get('/:wineId', async (req, res) => {
         res.send(err);
     }
 });
-routes.post('/', async (req, res) => {
+routes.post('/toWine/:wineId', async (req, res) => {
     try {
+        const { wineId } = req.params;
         const newEncounter = req.body;
-        //Grabbing the wine name from the wines database
-        const selectedName = await db('wines').where('id', newEncounter.wine_id).select('name');
-        newEncounter.wine_name = selectedName[0].name;
-        //
+        newEncounter.wine_id = +wineId;
         await db('encounters').insert(newEncounter);
         res.status(200).send(newEncounter);
     }
@@ -37,10 +35,10 @@ routes.post('/', async (req, res) => {
         res.send(err);
     }
 });
-routes.delete('/:wineId', async (req, res) => {
-    const { wineId } = req.params;
+routes.delete('/:encounterId', async (req, res) => {
+    const { encounterId } = req.params;
     try {
-        await db('encounters').where('id', wineId).del();
+        await db('encounters').where('id', encounterId).del();
         res.status(202).send('encounter deleted');
     }
     catch (err) {

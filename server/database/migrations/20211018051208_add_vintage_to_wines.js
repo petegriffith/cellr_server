@@ -1,19 +1,19 @@
 
 export async function up(knex) {
-    const addWineName = () => {
+    const addVintage = () => {
         return knex.schema.table('wines', (t) => {
             t.integer('vintage')
         })
     }
-    await addWineName()
+    await addVintage()
   }
   
   export async function down(knex) {
-    const dropWineName = () => {
+    const dropVintage = () => {
         return knex.schema.table('wines', (t) => {
           t.dropColumn('vintage')
         })
     }
-    await dropWineName()
+    await dropVintage()
   }
 

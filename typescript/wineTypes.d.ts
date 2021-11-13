@@ -12,12 +12,13 @@ type NewWine = Partial<Wine>
 interface WineEncounter {
     id?: number
     wine_id: number
-    wine_name: string
+    wine_name?: string
     bottle_price?: number
     purchase_location?: string
     rating?: number
-    notes: string
-    encounter_date: string
+    notes?: string
+    encounter_date?: string
+    user_id: number
 }
 
 interface WineStoreContents {
