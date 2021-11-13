@@ -1,11 +1,11 @@
-export interface UserData {
+interface UserData {
   id: number;
   cellr_id: number;
   username: string;
   created_at: string;
 }
 
-export interface CellrData {
+interface CellrData {
   id: number;
   name: string;
   created_at: string;

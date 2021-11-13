@@ -1,5 +1,4 @@
 import { Router, Request, Response } from 'express'
-import { WineEncounter } from '../../typescript/wineTypes'
 import db from '../knex.js'
 
 const routes: Router = Router()
@@ -27,7 +26,7 @@ routes.get('/:wineId', async (req: Request, res: Response) => {
 
 routes.post('/', async (req: Request, res: Response) => {
   try {
-    const newEncounter = req.body
+    const newEncounter: WineEncounter = req.body
     //Grabbing the wine name from the wines database
     const selectedName = await db('wines').where('id', newEncounter.wine_id).select('name')
     newEncounter.wine_name = selectedName[0].name

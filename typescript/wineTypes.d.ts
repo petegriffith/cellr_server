@@ -1,4 +1,4 @@
-export interface Wine {
+interface Wine {
     id?: number
     name?: string
     varietal?: string
@@ -7,11 +7,11 @@ export interface Wine {
     created_at: string;
 }
 
-export type NewWine = Partial<Wine>
+type NewWine = Partial<Wine>
 
-export interface WineEncounter {
+interface WineEncounter {
     id?: number
-    wine_id?: number
+    wine_id: number
     wine_name: string
     bottle_price?: number
     purchase_location?: string
@@ -20,7 +20,7 @@ export interface WineEncounter {
     encounter_date: string
 }
 
-export interface WineStoreContents {
+interface WineStoreContents {
     allWinesList: Wine[],
     currentWine: Wine
   }

@@ -1,5 +1,4 @@
 import { Router, Request, Response } from 'express'
-import { Wine, NewWine } from '../../typescript/wineTypes'
 import db from '../knex.js'
 
 const routes: Router = Router()

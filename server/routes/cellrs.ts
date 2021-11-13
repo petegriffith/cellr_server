@@ -1,5 +1,4 @@
 import { Router, Request, Response } from 'express'
-import { CellrData } from '../../typescript/adminTypes'
 import db from '../knex.js'
 
 const routes: Router = Router()
