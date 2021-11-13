@@ -1,6 +1,16 @@
 import { Router } from 'express';
 import db from '../knex.js';
 const routes = Router();
+routes.get('/allCellrs', async (req, res) => {
+    try {
+        const wines = await db('wines');
+        res.status(200).send(wines);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(err);
+    }
+});
 routes.get('/all', async (req, res) => {
     try {
         const wines = await db('wines').where('cellr_id', req.headers.cellr_id);
