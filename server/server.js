@@ -5,6 +5,7 @@ import cellrs from './routes/cellrs.js';
 import users from './routes/users.js';
 import wines from './routes/wines.js';
 import encounters from './routes/encounters.js';
+import cors from 'cors';
 const port = process.env.PORT || 3000;
 export default async () => {
     // Initialize express
@@ -18,6 +19,9 @@ export default async () => {
     }
     //Middleware
     app.use(express.json());
+    app.use(cors({
+        origin: 'https://happy-tereshkova-ae8e78.netlify.app/',
+    }));
     // API routes
     app.use('/cellrs', cellrs);
     app.use('/users', users);
